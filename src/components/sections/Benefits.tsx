@@ -145,7 +145,7 @@ const Benefits: React.FC = () => {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 max-w-7xl mx-auto border border-white/10 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 max-w-7xl mx-auto border border-white/10 rounded-2xl overflow-hidden">
           {benefits.map((benefit, index) => (
             <BenefitCard key={benefit.title} benefit={benefit} index={index} />
           ))}
