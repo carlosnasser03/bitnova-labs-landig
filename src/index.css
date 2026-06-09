@@ -1,88 +1,149 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  * {
-    @apply m-0 p-0 border-border;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  border-color: currentColor;
+}
 
-  html {
-    @apply scroll-smooth;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  body {
-    @apply bg-black text-white/90 font-sans antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+body {
+  background-color: rgb(0, 0, 0);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
-  }
-
-  h2 {
-    @apply text-3xl md:text-4xl font-bold tracking-tight;
-  }
-
-  h3 {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight;
-  }
-
-  h4 {
-    @apply text-xl md:text-2xl font-semibold;
-  }
-
-  p {
-    @apply leading-relaxed text-white/70;
-  }
-
-  a {
-    @apply transition-colors duration-200;
+    font-size: 3rem;
   }
 }
 
-@layer components {
-  .liquid-glass {
-    @apply relative overflow-hidden;
-    background: rgba(255, 255, 255, 0.01);
-    background-blend-mode: luminosity;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: none;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.75rem;
   }
+}
 
-  .liquid-glass::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.4px;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.45) 0%,
-      rgba(255, 255, 255, 0.15) 20%,
-      rgba(255, 255, 255, 0) 40%,
-      rgba(255, 255, 255, 0) 60%,
-      rgba(255, 255, 255, 0.15) 80%,
-      rgba(255, 255, 255, 0.45) 100%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.25rem;
   }
+}
 
-  .container-max {
-    @apply w-full max-w-6xl mx-auto;
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 1.875rem;
   }
+}
 
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+p {
+  line-height: 1.625;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+a {
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.liquid-glass {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.container-max {
+  width: 100%;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
   .section-padding {
-    @apply py-16 md:py-24 px-6;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
+}
 
-  .fade-in {
-    @apply animate-in fade-in duration-1000;
+.fade-in {
+  animation: fadeIn 1000ms;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
