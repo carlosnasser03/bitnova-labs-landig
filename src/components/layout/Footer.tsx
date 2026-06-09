@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Facebook, Instagram, Linkedin, Github, Mail, Phone } from 'lucide-react'
+import { Globe, MessageSquare, Link, Code, Mail, Phone } from 'lucide-react'
 import { config } from '@/config/content'
 
 const Footer: React.FC = () => {
@@ -18,10 +18,10 @@ const Footer: React.FC = () => {
   }
 
   const socialLinks = [
-    { icon: Facebook, href: config.footer.socials.facebook, label: 'Facebook' },
-    { icon: Instagram, href: config.footer.socials.instagram, label: 'Instagram' },
-    { icon: Linkedin, href: config.footer.socials.linkedin, label: 'LinkedIn' },
-    { icon: Github, href: config.footer.socials.github, label: 'GitHub' },
+    { icon: Globe, href: config.footer.socials.facebook, label: 'Facebook' },
+    { icon: MessageSquare, href: config.footer.socials.instagram, label: 'Instagram' },
+    { icon: Link, href: config.footer.socials.linkedin, label: 'LinkedIn' },
+    { icon: Code, href: config.footer.socials.github, label: 'GitHub' },
   ]
 
   return (

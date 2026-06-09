@@ -1,14 +1,14 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Star, Facebook, Instagram, Twitter } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Globe, MessageSquare } from 'lucide-react'
 import { config } from '@/config/content'
 import { useCarousel } from '@/hooks'
 import { Button, Badge, Card, StarRating } from '@/components/ui'
 
 const socialIconMap = {
-  facebook: Facebook,
-  instagram: Instagram,
-  linkedin: Twitter,
+  facebook: Globe,
+  instagram: MessageSquare,
+  linkedin: Globe,
   google: Star,
 } as const
 

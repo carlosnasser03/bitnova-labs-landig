@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Phone, Mail, MessageCircle, Check, AlertCircle } from 'lucide-react'
+import { Send, Mail, MessageCircle, Check, AlertCircle } from 'lucide-react'
 import { config } from '@/config/content'
 import { Button, Input, Badge } from '@/components/ui'
 import DOMPurify from 'dompurify'
@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
 
     try {
       // Validate with Zod
-      const validated = contactFormSchema.parse(formData)
+      const validated: ContactFormData = contactFormSchema.parse(formData)
 
       // TODO: Conectar a backend
       // const response = await fetch(import.meta.env.VITE_API_URL + '/contact', {
@@ -142,9 +142,9 @@ const Contact: React.FC = () => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors: Record<string, string> = {}
-        error.errors.forEach(err => {
-          const path = err.path[0] as string
-          newErrors[path] = err.message
+        error.issues.forEach(issue => {
+          const path = issue.path[0] as string
+          newErrors[path] = issue.message
         })
         setErrors(newErrors)
       } else {

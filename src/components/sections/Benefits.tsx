@@ -1,15 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import {
-  IconZap,
-  IconClock,
-  IconShield,
-  IconRocket,
-  IconUsers,
-  IconCurrencyDollar,
-  IconTrendingUp,
-  IconCheckCircle,
-} from '@tabler/icons-react'
+  Zap,
+  Clock,
+  Shield,
+  Rocket,
+  Users,
+  DollarSign,
+  TrendingUp,
+  CheckCircle2,
+} from 'lucide-react'
 import { config } from '@/config/content'
 import { cn } from '@/utils/cn'
 
@@ -22,14 +22,14 @@ interface BenefitItem {
 }
 
 const iconMap = {
-  'Zap': <IconZap className="w-6 h-6" />,
-  'Clock': <IconClock className="w-6 h-6" />,
-  'Shield': <IconShield className="w-6 h-6" />,
-  'Rocket': <IconRocket className="w-6 h-6" />,
-  'Users': <IconUsers className="w-6 h-6" />,
-  'DollarSign': <IconCurrencyDollar className="w-6 h-6" />,
-  'TrendingUp': <IconTrendingUp className="w-6 h-6" />,
-  'CheckCircle': <IconCheckCircle className="w-6 h-6" />,
+  'Zap': <Zap className="w-6 h-6" />,
+  'Clock': <Clock className="w-6 h-6" />,
+  'Shield': <Shield className="w-6 h-6" />,
+  'Rocket': <Rocket className="w-6 h-6" />,
+  'Users': <Users className="w-6 h-6" />,
+  'DollarSign': <DollarSign className="w-6 h-6" />,
+  'TrendingUp': <TrendingUp className="w-6 h-6" />,
+  'CheckCircle': <CheckCircle2 className="w-6 h-6" />,
 }
 
 const BenefitCard = ({
@@ -41,7 +41,6 @@ const BenefitCard = ({
 }) => {
   const isBottomRow = index >= 4
   const isLeftColumn = index % 4 === 0
-  const isRightColumn = index % 4 === 3
 
   return (
     <motion.div

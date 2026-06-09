@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card'
 import { Button } from '@/components/ui'
@@ -44,12 +44,10 @@ const VideoCard: React.FC<{
   index: number
 }> = ({ feature, index }) => {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
         if (videoRef.current) {
           if (entry.isIntersecting) {
             videoRef.current.play().catch(() => {})
@@ -79,7 +77,7 @@ const VideoCard: React.FC<{
         <CardBody className={`bg-gradient-to-br ${feature.color} to-transparent relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-white/[0.1] w-full h-full rounded-2xl p-6 border`}>
           {/* Title */}
           <CardItem
-            translateZ="50"
+            translateZ={50}
             className="text-2xl font-bold text-white mb-2"
           >
             {feature.title}
@@ -87,15 +85,14 @@ const VideoCard: React.FC<{
 
           {/* Description */}
           <CardItem
-            as="p"
-            translateZ="60"
+            translateZ={60}
             className="text-white/70 text-sm max-w-sm mb-4"
           >
             {feature.description}
           </CardItem>
 
           {/* Video */}
-          <CardItem translateZ="100" className="w-full flex-1">
+          <CardItem translateZ={100} className="w-full flex-1">
             <video
               ref={videoRef}
               src={feature.videoSrc}
@@ -108,7 +105,7 @@ const VideoCard: React.FC<{
           </CardItem>
 
           {/* Benefits */}
-          <CardItem translateZ="50" className="mt-4">
+          <CardItem translateZ={50} className="mt-4">
             <div className="grid grid-cols-2 gap-2">
               {feature.benefits.map(benefit => (
                 <div key={benefit} className="text-xs text-white/60 flex items-center gap-1">
@@ -120,7 +117,7 @@ const VideoCard: React.FC<{
           </CardItem>
 
           {/* CTA */}
-          <CardItem translateZ="20" as="div" className="mt-6 w-full">
+          <CardItem translateZ={20} className="mt-6 w-full">
             <Button
               variant="primary"
               size="sm"

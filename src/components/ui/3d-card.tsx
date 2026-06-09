@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from "react"
+import React, { useRef } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/utils/cn"
 
@@ -14,7 +14,6 @@ export const CardContainer = ({
   containerClassName?: string
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [isMouseEnter, setIsMouseEnter] = useState(false)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return
@@ -26,12 +25,7 @@ export const CardContainer = ({
 
   const handleMouseLeave = () => {
     if (!containerRef.current) return
-    setIsMouseEnter(false)
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`
-  }
-
-  const handleMouseEnter = () => {
-    setIsMouseEnter(true)
   }
 
   return (
@@ -43,7 +37,6 @@ export const CardContainer = ({
     >
       <div
         ref={containerRef}
-        onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className={cn(
@@ -83,7 +76,6 @@ export const CardBody = ({
 }
 
 export const CardItem = ({
-  as: Tag = "div",
   children,
   className,
   translateZ = 0,
@@ -94,7 +86,6 @@ export const CardItem = ({
   rotateZ = 0,
   ...rest
 }: {
-  as?: string | React.ComponentType<any>
   children: React.ReactNode
   className?: string
   translateZ?: number
@@ -107,7 +98,6 @@ export const CardItem = ({
 }) => {
   return (
     <motion.div
-      as={Tag as any}
       className={cn("w-fit transform", className)}
       style={{
         transform: `translateZ(${translateZ}px) translateX(${translateX}px) translateY(${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`,
