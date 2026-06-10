@@ -11,7 +11,6 @@ import {
   CheckCircle2,
 } from 'lucide-react'
 import { config } from '@/config/content'
-import { cn } from '@/utils/cn'
 
 interface BenefitItem {
   title: string
@@ -39,76 +38,57 @@ const BenefitCard = ({
   benefit: BenefitItem
   index: number
 }) => {
-  const isBottomRow = index >= 4
-  const isLeftColumn = index % 4 === 0
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
       viewport={{ once: true }}
-      className={cn(
-        'flex flex-col lg:border-r py-10 px-6 relative group/benefit dark:border-white/10',
-        (isLeftColumn && 'lg:border-l dark:border-white/10'),
-        (!isBottomRow && 'lg:border-b dark:border-white/10')
-      )}
+      className="flex flex-col py-12 px-6 relative group/benefit"
       whileHover={{ scale: 1.02 }}
     >
-      {/* Gradient Overlay */}
-      {!isBottomRow && (
-        <div className="opacity-0 group-hover/benefit:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-blue-500/5 via-transparent to-transparent pointer-events-none" />
-      )}
-      {isBottomRow && (
-        <div className="opacity-0 group-hover/benefit:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-b from-violet-500/5 via-transparent to-transparent pointer-events-none" />
-      )}
+      {/* Gradient Overlay on Hover */}
+      <div className="opacity-0 group-hover/benefit:opacity-100 transition duration-300 absolute inset-0 h-full w-full bg-gradient-to-br from-blue-500/3 via-transparent to-violet-500/3 pointer-events-none rounded-lg" />
 
       {/* Icon */}
-      <div className="mb-6 relative z-10 text-blue-400 group-hover/benefit:text-violet-400 transition-colors duration-200">
+      <div className="mb-4 relative z-10 text-blue-400 group-hover/benefit:text-blue-300 transition-colors duration-200">
         {benefit.icon}
       </div>
 
-      {/* Title with Left Accent Bar */}
-      <div className="text-lg font-bold mb-3 relative z-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/benefit:h-8 w-1 rounded-tr-full rounded-br-full bg-white/20 group-hover/benefit:bg-blue-500 transition-all duration-300 origin-center" />
-        <span className="group-hover/benefit:translate-x-2 transition duration-300 inline-block text-white">
-          {benefit.title}
-        </span>
-      </div>
+      {/* Title */}
+      <h3 className="text-lg font-semibold text-white mb-4 relative z-10 group-hover/benefit:text-blue-200 transition-colors">
+        {benefit.title}
+      </h3>
 
-      {/* Problem → Solution → Result */}
-      <div className="space-y-3 relative z-10 text-sm">
+      {/* Content */}
+      <div className="space-y-4 relative z-10 text-sm flex-grow">
         <div>
-          <p className="text-white/50 text-xs uppercase tracking-wide mb-1">
+          <p className="text-white/40 text-xs uppercase tracking-wide font-medium mb-2">
             El Problema
           </p>
           <p className="text-white/80">{benefit.problem}</p>
         </div>
 
-        <div className="flex items-center gap-2 text-blue-400">
-          <div className="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent" />
-          <span className="text-xs">→</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-blue-500/50 to-transparent" />
+        <div className="flex items-center justify-center py-2">
+          <span className="text-white/30 text-lg">↓</span>
         </div>
 
         <div>
-          <p className="text-white/50 text-xs uppercase tracking-wide mb-1">
+          <p className="text-white/40 text-xs uppercase tracking-wide font-medium mb-2">
             Nuestra Solución
           </p>
           <p className="text-white/80">{benefit.solution}</p>
         </div>
 
-        <div className="flex items-center gap-2 text-violet-400">
-          <div className="flex-1 h-px bg-gradient-to-r from-violet-500/50 to-transparent" />
-          <span className="text-xs">→</span>
-          <div className="flex-1 h-px bg-gradient-to-l from-violet-500/50 to-transparent" />
+        <div className="flex items-center justify-center py-2">
+          <span className="text-blue-400/50 text-lg">↓</span>
         </div>
 
         <div>
-          <p className="text-white/50 text-xs uppercase tracking-wide mb-1">
+          <p className="text-white/40 text-xs uppercase tracking-wide font-medium mb-2">
             Tu Resultado
           </p>
-          <p className="text-white/80 font-semibold text-base group-hover/benefit:text-green-400 transition-colors">
+          <p className="text-white/90 font-semibold text-base group-hover/benefit:text-green-300 transition-colors">
             ✓ {benefit.result}
           </p>
         </div>
@@ -145,7 +125,7 @@ const Benefits: React.FC = () => {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 max-w-7xl mx-auto border border-white/10 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 relative z-10 max-w-7xl mx-auto">
           {benefits.map((benefit, index) => (
             <BenefitCard key={benefit.title} benefit={benefit} index={index} />
           ))}
